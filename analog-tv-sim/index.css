@@ -1,0 +1,66 @@
+body {
+    overflow: hidden; /* rids of scroll bar */
+    background-color: black;
+    cursor: url("assets/remote-control.png"), auto; 
+    overflow: hidden
+    height: 100; /* full viewport height */
+    padding: 0;
+}
+
+#power-btn {
+    all: unset;
+    cursor: pointer;
+  }
+
+#tv {
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    object-fit: cover;
+    display: block;
+}
+
+#static {
+    display: none;
+    height: 90%;
+    width: 60%;
+    top: 0;
+    left: 20%;
+    text-align: center;
+    z-index: -1;
+    box-shadow: 0 0 90px white;
+}
+
+#tv, #static {
+    position: fixed;
+    will-change: transform;
+    margin-left: auto;
+    margin-right: auto;
+}
+.volume, .channels {
+    position: relative;
+    padding: 30px;
+    vertical-align: auto;
+    font-size: 15px;
+    top: 30px;
+    left: 120px;
+}
+#volume, #channels {
+    border-radius: 9px;
+}
+#power-btn {
+    z-index: 1;
+    position: fixed;
+    top: 120px;
+    left: 50px;
+}
+#toggle-remote {
+    position: fixed;
+    padding: 10px;
+    display: block;
+    font-size: 10px;
+    background-color: red;
+    top: 70px;
+    left: 10px;
+}

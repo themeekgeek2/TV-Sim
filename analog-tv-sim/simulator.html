@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Simulator || WIP</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <!--<script type="text/javascrpt" src="sim-script.js" defer></script>-->
+</head>
+<body>
+    <div>
+        <img src="assets/remote-control.png" alt="remote" id="remote-cursor">
+    </div>
+    <div>
+        <img src="assets/transparent-analog-tv.png" alt="Image Unavailable" id="tv">
+    </div>
+    <div>
+        <img src="assets/tv-static.gif" id="static">
+    </div>
+    <div class="channels" onclick="TVchannels()">
+        <button id="channelUp">+</button>
+        <br></br>
+        <button><strong>CH</strong></button>
+        <br></br>
+        <button id="channelDown">-</button>
+    </div>
+    <div id="gif-container"></div>
+    <button id="power-btn" onclick="showStaticFunc()">
+        <img src="assets/power-button.png" alt="power button"  width="40px" height="40px">
+    </button>
+    <!--SCRIPT-->
+    <script type="text/javascript" defer>
+
+        const remote = document.getElementById("remote-cursor");
+        const static = document.getElementById("static");
+        var showStatic = false;
+
+        /* activate static gif. note: for some reason this was not working on the seperate JS file */
+            function showStaticFunc() {
+                document.getElementById("static").style.display = "block";
+                showStatic = true;
+                // prevents gifs from showing before static is activated
+                if(showStatic == false) {
+                    TVchannels = null;
+                    return null;
+                } else {
+                    TVchannels != null;
+                    return true;
+                }
+            }
+
+            /* test function for gifs
+                function displayStaticFunc(showStatic) {
+                showStatic == false;
+                if(showStatic) {
+                TVchannels == null;
+                return null;
+                } else {
+                 showStatic == true;
+                    }
+
+                while (showStatic == true;) {
+                document.getElementById("static").style.display = "block";
+                    }
+                } */
+
+
+        // change channels
+        function TVchannels() {
+        var gifs = [
+            "assets/d2.gif",
+            "assets/giphy.gif",
+            "assets/amiga-juggler.gif",
+            "assets/cartman.gif",
+            "assets/tunnel.gif",
+            "assets/purple-abstract.gif",
+            "assets/clouds.gif",
+            "assets/sign-off.gif",
+            "assets/tv-static2.gif",
+            "assets/dash1.gif"
+        ]; 
+
+        var randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+        var gifContainer = document.getElementById("gif-container");
+        
+        const newChannel = document.createElement("img");
+        newChannel.src = randomGif;
+        newChannel.alt = "TV channel";
+        gifContainer.innerHTML = ""; /* clears previous img */
+
+        gifContainer.appendChild(newChannel); /* displays new img and logs filename in console(for debugging) */
+        console.log(newChannel);
+
+            //gif position and sizing
+                newChannel.style.zIndex = "-1";
+                newChannel.style.left = "20%";
+                newChannel.style.top = "0";
+                newChannel.style.width = "60%";
+                newChannel.style.height = "90%";
+                newChannel.style.position = "absolute";
+                newChannel.style.border = "solid black 15px";
+                newChannel.style.boxShadow = "0 0 90px white";
+        
+    }
+        // prevents channels from showing before initial static
+        /* if (showStatic == false) {
+            TVchannels = null;
+                } else {
+                    TVchannels();
+                } */
+
+            /* function showStatic() {
+                
+            } */
+
+
+        // toggles remote cursor off
+        document.addEventListener('keydown', function toggleRemoteCursor(event) {
+            if(event.key === 'Enter') {
+                document.body.style.cursor = "auto";
+                console.log("it worked")
+            } 
+        });
+
+    
+    </script>
+</body>
+</html>
